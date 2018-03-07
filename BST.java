@@ -1,36 +1,36 @@
 class BNode{
 
-	BNode left, right;
-	int value;
+	private BNode left, right;
+	private int value;
 
 	BNode(int value){
-		left = null;
-		right = null;
+		this.left = null;
+		this.right = null;
 		this.value = value;
 	}
 
 	void setLeftNode(BNode node){
-		left = node;
+		this.left = node;
 	}
 
 	void setRightNode(BNode node){
-		right = node;
+		this.right = node;
 	}
 
-	void setValue(int n){
-		value = n;
+	void setValue(int value){
+		this.value = value;
 	}
 
 	int getValue(){
-		return value;
+		return this.value;
 	}
 
 	BNode getLeft(){
-		return left;
+		return this.left;
 	}
 
 	BNode getRight(){
-		return right;
+		return this.right;
 	}
 }
 
@@ -39,11 +39,11 @@ public class BST{
 	private BNode root;
 
 	public BST(){
-		root = null;
+		this.root = null;
 	}
 
-	BNode insert(BNode node , int num){
-		if(node == null){
+	private BNode insert(BNode node, int num){
+		if(node == null) {
 			node = new BNode(num);
 		}
 		else{
@@ -56,25 +56,24 @@ public class BST{
 	}
 
 	//Wrapper function to call insert.
-
-	void insert(int num){
-		root = insert(root, num);
+	public void insert(int num){
+		this.root = insert(this.root, num);
 	}
 
-	int countNode(BNode node){
+	private int countNode(BNode node){
 		if(node == null)
 			return 0;
 		else{
-			return 1+countNode(node.getLeft()) + countNode(node.getRight());
+			return 1 + countNode(node.getLeft()) + countNode(node.getRight());
 		}
 	}
 
 	//Wrapper function to call countNode
-	int countNode(){
-		return countNode(root);
+	public int countNode(){
+		return countNode(this.root);
 	}
 
-	int sumValue(BNode node){
+	private int sumValue(BNode node){
 		if(node == null)
 			return 0;
 		else{
@@ -84,8 +83,8 @@ public class BST{
 
 	//Wrapper function to call sumValue
 
-	int sumValue(){
-		return sumValue(root);
+	public int sumValue(){
+		return sumValue(this.root);
 	}
 
 	public static void main(String[] argv){
