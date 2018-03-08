@@ -1,40 +1,35 @@
 public class EvenOddSum{
 
-	int evenLevelSum ; 
-	int oddLevelSum ;
 	BST bst ; 
 
 	EvenOddSum(){
 		bst = new BST();
-		evenLevelSum = 0;
-		oddLevelSum = 0;
 	}
 
-	public void findLevelSum(BNode node, int level){
+	public int[] findLevelSum(BNode node, int level, int[] sum){
 		if(node == null){	
-			return;
+			return sum;
 		}
 		else if(level % 2 == 0){
-			evenLevelSum += node.getValue();
+			sum[0] += node.getValue();
 		}
 		else{
-			oddLevelSum += node.getValue();
+			sum[1] += node.getValue();
 		}
 		level++ ;
-		findLevelSum(node.getLeft() , level);
-		findLevelSum(node.getRight() , level);
-		return ;
+		findLevelSum(node.getLeft() , level , sum);
+		findLevelSum(node.getRight() , level , sum);
+		return sum;
 	} 
 
 	//Wrapper function to call findLevelSum function.
 
 	public void findLevelSum(){
 		//assigning value 0 otherwise if we call finlevel function more than once it'll chance the value.
-		evenLevelSum = 0;
-		oddLevelSum = 0;
-		findLevelSum(bst.root , 0);
-		System.out.println("Even level sum = " + evenLevelSum);
-		System.out.println("Odd level sum = " + oddLevelSum);
+		int[] sum = new int[]{0,0};
+		findLevelSum(bst.root , 0, sum);
+		System.out.println("Even level sum = " + sum[0]);
+		System.out.println("Odd level sum = " + sum[1]);
 	}
 
 	public static void main(String[] argv){
