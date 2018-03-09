@@ -30,38 +30,24 @@ class IterativeTraversal{
 	}
 
 	public void inOrderTraversal(){
-		ArrayList<BNode> al = new ArrayList<>();
+		Stack<BNode> stack = new Stack<BNode>();
 		BNode currentNode = bst.root;			
 		boolean flag = true;
 		while(flag){
 			if(currentNode != null){
-				al.add(currentNode);
+				stack.push(currentNode);
 				currentNode = currentNode.getLeft();
 			}
 			else{
-				if(al.size() == 0)
+				if(stack.isEmpty())
 					break;
-				currentNode = al.remove(al.size() - 1);
+				currentNode = stack.pop();
 				System.out.print(currentNode.getValue() + " ");
 				currentNode = currentNode.getRight();
 			}
 			
 		}
 
-		// do{
-		// 	if(currentNode != null){
-		// 		al.add(currentNode);
-		// 		currentNode = currentNode.getLeft();
-		// 	}
-		// 	else{
-		// 		if(al.size() == 0)
-		// 			break;
-		// 		currentNode = al.remove(al.size() - 1);
-		// 		System.out.print(currentNode.getValue() + " ");
-		// 		currentNode = currentNode.getRight();
-		// 	}
-			
-		// }while(al.size() != 0);
 		System.out.println();
 	}
 
@@ -72,7 +58,7 @@ class IterativeTraversal{
 		Queue<BNode> queue = new LinkedList<BNode>();
 		queue.offer(this.bst.root);
 		while(!queue.isEmpty()) {
-			TreeNode top = queue.poll();
+			BNode top = queue.poll();
 			System.out.print(top.getValue() + " ");
 			if(top.getLeft() != null)
 				queue.add(top.getLeft());
