@@ -1,16 +1,13 @@
 import java.util.*;
 public class ChangeValue{
 
-	BST bst ; 
-	int count;
+	BST bst ;
 
 	ChangeValue(){
 		bst = new BST();
-		count = 1;
 	}
 
 	int sumValue(BNode node){
-		System.out.println(count++);
 		if(node == null)
 			return 0;
 		else{
