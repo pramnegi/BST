@@ -4,32 +4,33 @@ public class BNode{
 	int value;
 
 	BNode(int value){
-		left = null;
-		right = null;
+		this.left = null;
+		this.right = null;
 		this.value = value;
 	}
 
 	void setLeftNode(BNode node){
-		left = node;
+		this.left = node;
 	}
 
 	void setRightNode(BNode node){
-		right = node;
+		this.right = node;
 	}
 
-	void setValue(int n){
-		value = n;
+	void setValue(int value){
+		this.value = value;
 	}
 
 	int getValue(){
-		return value;
+		return this.value;
 	}
 
 	BNode getLeft(){
-		return left;
+		return this.left;
 	}
 
 	BNode getRight(){
-		return right;
+		return this.right;
 	}
 }
+
