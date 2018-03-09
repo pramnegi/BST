@@ -8,16 +8,23 @@ class IterativeTraversal{
 	}
 
 	public void preOrderTraversal(){
-		ArrayList<BNode> al = new ArrayList<>();
-		if(this.bst.root != null)
-			al.add(this.bst.root);
-		while(al.size() != 0){
-			BNode currentNode = al.remove(al.size()-1);			//To get the last element from end of the ArrayList.
-			System.out.print(currentNode.getValue() + " ");
-			if(currentNode.getRight() != null)
-				al.add(currentNode.getRight());
-			if(currentNode.getLeft() != null)
-				al.add(currentNode.getLeft());
+		if(this.bst.root == null) {
+			return;
+		}
+		
+		Stack<BNode> stack = new Stack<BNode>();
+		stack.push(this.bst.root);
+		
+		while(!stack.isEmpty()) {
+			BNode top = stack.pop();
+			System.out.print(top.getValue() + " ");
+
+			if(top.getRight() != null) {
+				stack.push(top.getRight());
+			}
+			if(top.getLeft() != null) {
+				stack.push(top.getLeft());
+			}
 		}
 		System.out.println();
 	}
@@ -59,16 +66,19 @@ class IterativeTraversal{
 	}
 
 	public void levelTraversal(){
-		ArrayList<BNode> al = new ArrayList<>();
-		if(this.bst.root != null)
-			al.add(this.bst.root);
-		while(al.size() != 0){
-			BNode currentNode = al.remove(0);			//To get the last element from strting the ArrayList.
-			System.out.print(currentNode.getValue() + " ");
-			if(currentNode.getLeft() != null)
-				al.add(currentNode.getLeft());
-			if(currentNode.getRight() != null)
-				al.add(currentNode.getRight());
+		if(this.bst.root == null) {
+			return;
+		}
+		Queue<BNode> queue = new LinkedList<BNode>();
+		queue.offer(this.bst.root);
+		while(!queue.isEmpty()) {
+			TreeNode top = queue.poll();
+			System.out.print(top.getValue() + " ");
+			if(top.getLeft() != null)
+				queue.add(top.getLeft());
+			if(top.getRight() != null)
+				queue.add(top.getRight());
+			
 		}
 		System.out.println();
 	}
