@@ -2,36 +2,31 @@ import java.util.*;
 
 public class LevelSum{
 
-	BST bst ; 
+	private BST bst ; 
 
-	LevelSum(){
-		bst = new BST();
+	public LevelSum(){
+		this.bst = new BST();
 	}
 
-	public void findEachLevelSum(BNode node,int level, Map<Integer,Integer>map){
-		if(node == null)	
-			return;
-		else{
+	private void findEachLevelSum(BNode node, int level, Map<Integer,Integer> map){
+		if(node != null) {
 			if(map.containsKey(level))
-				map.put(level, map.get(level)+node.getValue());
+				map.put(level, map.get(level) + node.getValue());
 			else
 				map.put(level, node.getValue());
-			level++;
-			findEachLevelSum(node.getLeft() , level, map);
-			findEachLevelSum(node.getRight() , level, map);
+			findEachLevelSum(node.getLeft(), level + 1, map);
+			findEachLevelSum(node.getRight(), level + 1, map);
 		}
-			
 	} 
 
 	//Wrapper function to call findEachLevelSum function.
-
 	public void findEachLevelSum(){
-		Map<Integer, Integer>map = new HashMap<>();
-		findEachLevelSum(bst.root,0,map);
+		Map<Integer, Integer> map = new HashMap<>();
+		findEachLevelSum(this.bst.root, 0, map);
 		if(map.size() == 0)
 			System.out.println("Tree is empty");
-		for(Map.Entry n : map.entrySet()){
-			System.out.println("Level "+n.getKey()+" sum : "+n.getValue());
+		for(Map.Entry entry : map.entrySet()){
+			System.out.println("Level " + entry.getKey() + " sum : " + entry.getValue());
 		}
 	}
 
@@ -50,5 +45,4 @@ public class LevelSum{
 		obj.findEachLevelSum();
 		new LevelSum().findEachLevelSum();				//check for empty binary search tree.
 	}
-
 }
