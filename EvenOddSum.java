@@ -6,28 +6,22 @@ public class EvenOddSum{
 		bst = new BST();
 	}
 
-	public int[] findLevelSum(BNode node, int level, int[] sum){
+	public void findLevelSum(BNode node, int level, int[] sum){
 		if(node == null){	
-			return sum;
+			return;
 		}
-		else if(level % 2 == 0){
-			sum[0] += node.getValue();
-		}
-		else{
-			sum[1] += node.getValue();
-		}
-		level++ ;
-		findLevelSum(node.getLeft() , level , sum);
-		findLevelSum(node.getRight() , level , sum);
-		return sum;
+		
+		sum[level % 2] += node.getValue();
+		
+		findLevelSum(node.getLeft(), level + 1 , sum);
+		findLevelSum(node.getRight(), level + 1, sum);
 	} 
 
 	//Wrapper function to call findLevelSum function.
-
 	public void findLevelSum(){
-		//assigning value 0 otherwise if we call finlevel function more than once it'll chance the value.
+		//assigning value 0 otherwise if we call findlevel function more than once it'll change the value.
 		int[] sum = new int[]{0,0};
-		findLevelSum(bst.root , 0, sum);
+		findLevelSum(bst.root, 0, sum);
 		System.out.println("Even level sum = " + sum[0]);
 		System.out.println("Odd level sum = " + sum[1]);
 	}
