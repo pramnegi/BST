@@ -1,6 +1,6 @@
 public class EvenOddSum{
 
-	BST bst ; 
+	private BST bst ; 
 
 	EvenOddSum(){
 		bst = new BST();

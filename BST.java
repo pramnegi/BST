@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-=======
+
 class BNode{
 
-	private BNode left, right;
-	private int value;
+	BNode left, right;
+	int value;
 
 	BNode(int value){
 		this.left = null;
@@ -36,7 +35,6 @@ class BNode{
 	}
 }
 
->>>>>>> 72cdb4328a8de515f32f86b88afa030206a7036f
 public class BST{
 
 	public BNode root;

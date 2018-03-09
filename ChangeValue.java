@@ -1,27 +1,25 @@
 import java.util.*;
 public class ChangeValue{
 
-	BST bst ;
+
+	private BST bst ; 
 
 	ChangeValue(){
-		bst = new BST();
+		this.bst = new BST();
 	}
 
 	int sumValue(BNode node){
-		if(node == null)
+		if(node == null) {
 			return 0;
-		else{
-			int value = node.getValue();
-			int temp = sumValue(node.getLeft()) + sumValue(node.getRight());
-			node.setValue(temp);
-			value += temp;
-			return value;
 		}
 		
+		int nodeValue = node.getValue();		
+		node.setValue(sumValue(node.getLeft()) + sumValue(node.getRight()));
+		return nodeValue + node.getValue();
 	}
 
 	public void sumValue(){
-		sumValue(bst.root);
+		sumValue(this.bst.root);
 	}
 
 	public void printTreePreOrder(BNode node){
@@ -34,7 +32,6 @@ public class ChangeValue{
 	}
 
 	//Wrapper function to call printTreePreOrder function.
-
 	public void printTreePreOrder(){
 		printTreePreOrder(bst.root);
 		System.out.println();
