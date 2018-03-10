@@ -9,48 +9,42 @@ public class AltLevelTraversal{
 	}
 
 	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2){
-		
 		if(this.bst.root == null) {
 			return;
 		}
 		System.out.println(this.bst.root.getValue() + " ");
 		stack1.push(this.bst.root);
 		while(!stack1.isEmpty() || !stack2.isEmpty()){
-			
-			while(!stack1.isEmpty()) {
-				BNode currentNode = stack1.pop();
-				if(currentNode.getRight() != null){
-					System.out.print(currentNode.getRight().getValue() + " ");
-					stack2.push(currentNode.getRight());
+			if(!stack1.isEmpty()) {
+				while(!stack1.isEmpty()) {
+					BNode top = stack1.pop();
+					System.out.println(top.getValue() + " ");
+					if(top.getLeft() != null){
+						stack2.push(top.getLeft());
+					}
+					if(top.getRight() != null){
+						stack2.push(top.getRight());
+					}
 				}
-				if(currentNode.getLeft() != null){
-					System.out.print(currentNode.getLeft().getValue() + " ");
-					stack2.push(currentNode.getLeft());
-				}
-			}
-			System.out.println();
-				
-			while(!stack2.isEmpty()) {
-				BNode currentNode = stack2.pop();
-				if(currentNode.getLeft() != null){
-					System.out.print(currentNode.getLeft().getValue() + " ");
-					stack1.push(currentNode.getLeft());
-				}
-				if(currentNode.getRight() != null){
-					System.out.print(currentNode.getRight().getValue() + " ");
-					stack1.push(currentNode.getRight());
+			} else {
+				while(!stack2.isEmpty()) {
+					BNode top = stack2.pop();
+					System.out.println(top.getValue() + " ");
+					if(top.getRight() != null){
+						stack2.push(top.getRight());
+					}
+					if(top.getLeft() != null){
+						stack2.push(top.getLeft());
+					}
 				}
 			}
 			System.out.println();
 		}
-
 	} 
 
 	//Wrapper function to call findEachLevelSum function.
 	public void altLevel(){
-		boolean isEvenLevel = true;
 		Stack<BNode> stack1 = new Stack<BNode>();
-		
 		Stack<BNode> stack2 = new Stack<BNode>();
 		altLevel(stack1, stack2);
 	}
