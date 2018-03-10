@@ -8,37 +8,38 @@ public class AltLevelTraversal{
 		this.bst = new BST();
 	}
 
-	private void altLevel(boolean isEvenLevel, Queue<BNode> evenQueue, ArrayList<BNode> oddAl){
-		if(evenQueue.peek() == null) {
+	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2){
+		
+		if(this.bst.root == null) {
 			return;
 		}
-		while(!evenQueue.isEmpty() || !oddAl.isEmpty()){
-			if(isEvenLevel){
-				while(!evenQueue.isEmpty()) {
-					BNode currentNode = evenQueue.poll();
-					System.out.print(currentNode.getValue() + " ");
-					if(currentNode.getLeft() != null)
-						oddAl.add(currentNode.getLeft());
-					if(currentNode.getRight() != null)
-						oddAl.add(currentNode.getRight());	
+		System.out.println(this.bst.root.getValue() + " ");
+		stack1.push(this.bst.root);
+		while(!stack1.isEmpty() || !stack2.isEmpty()){
+			
+			while(!stack1.isEmpty()) {
+				BNode currentNode = stack1.pop();
+				if(currentNode.getRight() != null){
+					System.out.print(currentNode.getRight().getValue() + " ");
+					stack2.push(currentNode.getRight());
 				}
-				isEvenLevel = false;
+				if(currentNode.getLeft() != null){
+					System.out.print(currentNode.getLeft().getValue() + " ");
+					stack2.push(currentNode.getLeft());
+				}
 			}
-			else{
-				int index = 0 , size = oddAl.size();
-				while(size > 0) {
-					System.out.print(oddAl.get(size - 1).getValue() + " ");
-					if(oddAl.get(index).getLeft() != null){
-						evenQueue.offer(oddAl.get(index).getLeft());
-					}
-					if(oddAl.get(index).getRight() != null){
-						evenQueue.offer(oddAl.get(index).getRight());
-					}
-					index++;
-					size--;
+			System.out.println();
+				
+			while(!stack2.isEmpty()) {
+				BNode currentNode = stack2.pop();
+				if(currentNode.getLeft() != null){
+					System.out.print(currentNode.getLeft().getValue() + " ");
+					stack1.push(currentNode.getLeft());
 				}
-				oddAl.clear();
-				isEvenLevel = true;
+				if(currentNode.getRight() != null){
+					System.out.print(currentNode.getRight().getValue() + " ");
+					stack1.push(currentNode.getRight());
+				}
 			}
 			System.out.println();
 		}
@@ -48,10 +49,10 @@ public class AltLevelTraversal{
 	//Wrapper function to call findEachLevelSum function.
 	public void altLevel(){
 		boolean isEvenLevel = true;
-		Queue<BNode> queue = new LinkedList<BNode>();
-		queue.offer(this.bst.root);
-		ArrayList<BNode> al = new ArrayList<BNode>();
-		altLevel(isEvenLevel, queue, al);
+		Stack<BNode> stack1 = new Stack<BNode>();
+		
+		Stack<BNode> stack2 = new Stack<BNode>();
+		altLevel(stack1, stack2);
 	}
 
 	public static void main(String[] argv){
