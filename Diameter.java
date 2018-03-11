@@ -30,7 +30,7 @@ class Diameter{
 	public static void main(String[] argv){
 		Diameter obj = new Diameter();
 		obj.bst.insert(70);
-		obj.bst.insert(90);
+		/*obj.bst.insert(90);
 		obj.bst.insert(30);
 		obj.bst.insert(30);
 		obj.bst.insert(20);
@@ -40,7 +40,7 @@ class Diameter{
 		obj.bst.insert(40);
 		obj.bst.insert(60);
 		obj.bst.insert(66);
-		obj.bst.insert(67);
+		obj.bst.insert(67);*/
 		
 		obj.findDiameter();
 		new Diameter().findDiameter();				//check for empty binary search tree.
