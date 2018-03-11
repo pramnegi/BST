@@ -1,4 +1,3 @@
-
 public class BST{
 
 	public BNode root;
