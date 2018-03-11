@@ -48,7 +48,7 @@ public class VerticalTraversal{
          }
     }    
     
-public void verticalTraversal(){
+    public void verticalTraversal(){
         verticalTraversal(this.bst.root);
     }
 
