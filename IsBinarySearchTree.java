@@ -10,7 +10,8 @@ public class IsBinarySearchTree{
 			return true;
 		if(node.getValue() <= min || max <= node.getValue())
 			return false;
-		return isBST(node.getLeft(), min, node.getValue()) && isBST(node.getRight(), node.getValue()-1, max) ;					//having assumption that the Right node of a given tree can have value greater than or equal to the parent node.
+		//having assumption that the Right node of a given tree can have value greater than or equal to the parent node.
+		return isBST(node.getLeft(), min, node.getValue()) && isBST(node.getRight(), node.getValue()-1, max) ;					
 	}
 
 	public void isBST(){
