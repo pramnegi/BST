@@ -1,54 +1,53 @@
 import java.util.Stack;
-public class IsBinarySearchTree{
+public class IsBinarySearchTree {
 
 	private BST bst;
-	IsBinarySearchTree(){
-		bst = new BST();
+	IsBinarySearchTree() {
+		this.bst = new BST();
 	}
 
-	private void isBST(BNode node, Stack<BNode> stack){
-		if (node == null){
-			System.out.println("Empty Tree");
-            return;
+	private bool isBST(BNode node, Stack<BNode> stack) {
+		if (node == null) {
+            return true;
 		}
-        stack.push(node);
-        node = node.getLeft();
-        while(node != null){
+
+		while(node != null) {
         	stack.push(node);
         	node = node.getLeft();
         }
-        while(!stack.isEmpty()){
+
+		BNode prev = null;
+
+        while(!stack.isEmpty()) {
         	BNode top = stack.pop();
-        	if(top.getRight() != null || top.getLeft() != null){
-        		if(top.getRight() != null && top.getLeft() != null){
-        			if(top.getLeft().getValue() >= top.getValue() || top.getRight().getValue() < top.getValue()){
-        				System.out.println("Not a Binary Search Tree");
-        				return;
-        			}
-        		}
-        		if(top.getLeft() != null && top.getLeft().getValue() >= top.getValue()){
-        			System.out.println("Not a Binary Search Tree");
-        			return;
-        		}
-        		if(top.getRight() != null && top.getRight().getValue() < top.getValue()){
-        			System.out.println("Not a Binary Search Tree");
-        			return;
-        		}
-        	}
-        	if(top.getRight() != null){
-        		node = top.getRight();
-        		while(node.getLeft() != null){
-        			stack.push(node.getLeft());
-        			node = node.getLeft();
-        		}
-        	}
-        }
-        System.out.println("Binary Search Tree");
+			if(prev != null) {
+				prev = top;
+			} else {
+				if(prev.getValue() >= top.getValue()) {
+					return false;
+				} else {
+					prev = top;
+					if(top.getRight() != null) {
+						BNode tempNode = top.getRight();
+						while(tempNode != null) {
+							stack.push(tempNode);
+							tempNode = tempNode.getLeft();
+						}
+					}
+				}
+			}
+		}
+		return true;
 	}
 
 	public void isBST(){
 		Stack<BNode> stack = new Stack<>();
-		isBST(this.bst.root, stack);
+		bool result = isBST(this.bst.root, stack);
+		if(result) {
+			System.out.println("Binary Search Tree");
+		} else {
+			System.out.println("Not a Binary Search Tree");
+		}
 	}
 
 	/*
