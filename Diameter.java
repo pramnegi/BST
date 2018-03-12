@@ -1,4 +1,6 @@
-class Diameter{
+import java.util.Map;
+import java.util.HashMap;
+class Diameter {
 
 	private BST bst;
 
@@ -6,31 +8,38 @@ class Diameter{
 		this.bst = new BST();
 	}
 
-	private int height(BNode node, int height){
+	private int height(BNode node, Map<BNode, Integer> map) {
 		if(node == null)
-			return height;
-		else{
-			return Math.max( height(node.getLeft(), height + 1) , height(node.getRight(), height + 1));
-		}
+			return 0;
+		else if(map.get(node) == null)
+			map.put(node,1+ Math.max(height(node.getLeft(), map), height(node.getRight(), map)));
+		return map.get(node);
 	}
 
-	private int findDiameter(BNode node){
-		if(node != null){
-			int temp = 1 + height(node.getLeft(), -1) + height(node.getRight(), -1)	;
-			int temp1 = Math.max(findDiameter(node.getLeft()), findDiameter(node.getRight())) ;
-			return Math.max( temp, temp1);	
+	private int findDiameter(BNode node, Map<BNode, Integer> map) {
+		int leftMax = 0, rightMax = 0;
+		if(node != null) {
+			if(node.getLeft() != null)
+				leftMax = map.get(node.getLeft());
+			if(node.getRight() != null)
+				rightMax = map.get(node.getRight());
+			int temp1 = 1 + Math.max(leftMax, rightMax);
+			int temp2 = Math.max(findDiameter(node.getLeft(), map), findDiameter(node.getRight(), map)) ;
+			return Math.max( temp1, temp2);	
 		}
 		return -1;
 	}
 
-	public void findDiameter(){
-		System.out.println(findDiameter(this.bst.root));
+	public void findDiameter() {
+		Map<BNode, Integer> map = new HashMap<>();
+		height(this.bst.root, map);
+		System.out.println(findDiameter(this.bst.root, map));
 	}
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		Diameter obj = new Diameter();
 		obj.bst.insert(70);
-		/*obj.bst.insert(90);
+		obj.bst.insert(90);
 		obj.bst.insert(30);
 		obj.bst.insert(30);
 		obj.bst.insert(20);
@@ -40,10 +49,10 @@ class Diameter{
 		obj.bst.insert(40);
 		obj.bst.insert(60);
 		obj.bst.insert(66);
-		obj.bst.insert(67);*/
+		obj.bst.insert(67);
 		
 		obj.findDiameter();
-		new Diameter().findDiameter();				//check for empty binary search tree.
+		new Diameter().findDiameter();			//check for empty binary search tree.
 	}
 
 }
