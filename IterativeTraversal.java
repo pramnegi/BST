@@ -1,13 +1,13 @@
 import java.util.*;
-class IterativeTraversal{
+class IterativeTraversal {
 	
 	private BST bst;
 
-	IterativeTraversal(){
+	IterativeTraversal() {
 		this.bst = new BST();
 	}
 
-	public void preOrderTraversal(){
+	public void preOrderTraversal() {
 		if(this.bst.root == null) {
 			return;
 		}
@@ -29,44 +29,44 @@ class IterativeTraversal{
 		System.out.println();
 	}
 
-	public void inOrderTraversal(){
-    Stack<BNode> stack = new Stack<BNode>();
-    if(this.bst.root == null)
-        return;
-    BNode current = this.bst.root;
+	public void inOrderTraversal() {
+		Stack<BNode> stack = new Stack<BNode>();
+		if(this.bst.root == null)
+			return;
+		BNode current = this.bst.root;
 
-    // while(current != null) {  
-    //     stack.push(current);
-    //     current = current.getLeft();
-    // } 
-  
-    // while(!stack.isEmpty()){
-    //     current = stack.pop();
-    //     System.out.print(current.getValue() + " ");
-    //     if(current.getRight() != null) {
-    //         current = current.getRight();
-    //         while(current != null) {
-    //             stack.push(current);
-    //             current = current.getLeft();
-    //          }
-    //     }
-    // }
+// 		while(current != null) {  
+// 			stack.push(current);
+// 			current = current.getLeft();
+// 		} 
 
-    while(!stack.isEmpty() || (current != null)) {
-        if(current != null) {
-            stack.push(current);
-            current = current.getLeft();
-        } else {
-            current = stack.pop();
-            System.out.print(current.getValue() + " ");
-            current = current.getRight();
-        }
-    }
+// 		while(!stack.isEmpty()){
+// 			current = stack.pop();
+// 			System.out.print(current.getValue() + " ");
+// 			if(current.getRight() != null) {
+// 				current = current.getRight();
+// 				while(current != null) {
+// 					stack.push(current);
+// 					current = current.getLeft();
+// 				 }
+// 			}
+// 		}
 
-    System.out.println();
-}
+		while(!stack.isEmpty() || (current != null)) {
+			if(current != null) {
+				stack.push(current);
+				current = current.getLeft();
+			} else {
+				current = stack.pop();
+				System.out.print(current.getValue() + " ");
+				current = current.getRight();
+			}
+		}
 
-	public void levelTraversal(){
+		System.out.println();
+	}
+
+	public void levelTraversal() {
 		if(this.bst.root == null) {
 			return;
 		}
@@ -79,13 +79,11 @@ class IterativeTraversal{
 				queue.add(top.getLeft());
 			if(top.getRight() != null)
 				queue.add(top.getRight());
-			
 		}
 		System.out.println();
 	}
 
-	public static void main(String[] argv){
-
+	public static void main(String[] argv) {
 		IterativeTraversal obj = new IterativeTraversal();
 		obj.bst.insert(40);
 		obj.bst.insert(10);
@@ -102,5 +100,4 @@ class IterativeTraversal{
 		obj.levelTraversal();
 		//new IterativeTraversal().preOrderTraversal();				//check for empty binary search tree.
 	}
-
 }
