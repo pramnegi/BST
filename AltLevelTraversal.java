@@ -1,14 +1,14 @@
 import java.util.*;
 
-public class AltLevelTraversal{
+public class AltLevelTraversal {
 
 	private BST bst ; 
 
-	public AltLevelTraversal(){
+	public AltLevelTraversal() {
 		this.bst = new BST();
 	}
 
-	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2){
+	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2) {
 		if(this.bst.root == null) {
 			return;
 		}
@@ -43,13 +43,13 @@ public class AltLevelTraversal{
 	} 
 
 	//Wrapper function to call findEachLevelSum function.
-	public void altLevel(){
+	public void altLevel() {
 		Stack<BNode> stack1 = new Stack<BNode>();
 		Stack<BNode> stack2 = new Stack<BNode>();
 		altLevel(stack1, stack2);
 	}
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		AltLevelTraversal obj = new AltLevelTraversal();
 		obj.bst.insert(70);
 		obj.bst.insert(90);
