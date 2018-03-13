@@ -1,57 +1,54 @@
-public class BST{
+public class BST {
 
 	public BNode root;
 
-	public BST(){
+	public BST() {
 		this.root = null;
 	}
 
-	private BNode insert(BNode node, int num){
+	private BNode insert(BNode node, int num) {
 		if(node == null) {
 			node = new BNode(num);
 		}
-		else{
+		else {
 			if (num < node.getValue())
-				node.left = insert(node.getLeft() , num);
+				node.left = insert(node.getLeft(), num);
 			else
-				node.right = insert(node.getRight() , num);
+				node.right = insert(node.getRight(), num);
 		}
 		return node;
 	}
 
 	//Wrapper function to call insert.
-	public void insert(int num){
+	public void insert(int num) {
 		this.root = insert(this.root, num);
 	}
 
-	private int countNode(BNode node){
+	private int countNode(BNode node) {
 		if(node == null)
 			return 0;
-		else{
+		else
 			return 1 + countNode(node.getLeft()) + countNode(node.getRight());
-		}
 	}
 
 	//Wrapper function to call countNode
-	public int countNode(){
+	public int countNode() {
 		return countNode(this.root);
 	}
 
-	private int sumValue(BNode node){
+	private int sumValue(BNode node) {
 		if(node == null)
 			return 0;
-		else{
+		else
 			return node.getValue() + sumValue(node.getLeft()) + sumValue(node.getRight());
-		}
 	}
 
 	//Wrapper function to call sumValue
-
-	public int sumValue(){
+	public int sumValue() {
 		return sumValue(this.root);
 	}
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		BST bst = new BST();
 		bst.insert(7);
 		bst.insert(9);
@@ -65,5 +62,4 @@ public class BST{
 		//System.out.println(bst.countNode());
 		System.out.println(bst.sumValue());
 	}
-
 }
