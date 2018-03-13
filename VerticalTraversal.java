@@ -3,14 +3,11 @@ import java.util.*;
 public class VerticalTraversal{
 
 	private BST bst ; 
-
 	public VerticalTraversal(){
 		this.bst = new BST();
 	}
 
-
 	private void verticalTraversal(BNode node){
-        
         if(node == null)
             return;
 
@@ -18,7 +15,7 @@ public class VerticalTraversal{
         Map<Integer, ArrayList<Integer>> map = new HashMap<>();        
         Queue<BNode> nodeQueue = new LinkedList<BNode>();
         Queue<Integer> levelQueue = new LinkedList<Integer>();
-        
+
         nodeQueue.offer(node);
         levelQueue.offer(0);
         
@@ -45,7 +42,7 @@ public class VerticalTraversal{
         while(map.containsKey(smallestKey)){
             System.out.println(map.get(smallestKey));
             smallestKey++;
-         }
+		}
     }    
     
     public void verticalTraversal(){
