@@ -2,7 +2,7 @@ import java.util.Stack;
 public class IsBinarySearchTree {
 
 	private BST bst;
-	IsBinarySearchTree() {
+	public IsBinarySearchTree() {
 		this.bst = new BST();
 	}
 
@@ -17,15 +17,14 @@ public class IsBinarySearchTree {
         }
 
 		BNode prev = null;
-
         while(!stack.isEmpty()) {
         	BNode top = stack.pop();
-			if(prev != null) {
+			if(prev != null)
 				prev = top;
-			} else {
-				if(prev.getValue() >= top.getValue()) {
+			else {
+				if(prev.getValue() >= top.getValue())
 					return false;
-				} else {
+				else {
 					prev = top;
 					if(top.getRight() != null) {
 						BNode tempNode = top.getRight();
@@ -40,7 +39,7 @@ public class IsBinarySearchTree {
 		return true;
 	}
 
-	public void isBST(){
+	public void isBST() {
 		Stack<BNode> stack = new Stack<>();
 		bool result = isBST(this.bst.root, stack);
 		if(result) {
@@ -79,7 +78,7 @@ public class IsBinarySearchTree {
 	}
 	*/
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		IsBinarySearchTree obj = new IsBinarySearchTree();
 		//obj.bst.insert(-2147483648);
 		obj.bst.insert(90);
