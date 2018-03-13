@@ -1,16 +1,14 @@
 import java.util.*;
 
-public class VerticalTraversal{
+public class VerticalTraversal {
 
 	private BST bst ; 
 
-	public VerticalTraversal(){
+	public VerticalTraversal() {
 		this.bst = new BST();
 	}
 
-
-	private void verticalTraversal(BNode node){
-        
+	private void verticalTraversal(BNode node) {
         if(node == null)
             return;
 
@@ -48,11 +46,11 @@ public class VerticalTraversal{
          }
     }    
     
-    public void verticalTraversal(){
+    public void verticalTraversal() {
         verticalTraversal(this.bst.root);
     }
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		VerticalTraversal obj = new VerticalTraversal();
 		obj.bst.insert(70);
 		obj.bst.insert(90);
