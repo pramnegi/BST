@@ -1,10 +1,9 @@
 import java.util.Queue;
 import java.util.LinkedList;
-class LeastAncestor {
+class LeastCommonAncestor {
 
 	private BST bst;
-
-	LeastAncestor() {
+	LeastCommonAncestor() {
 		this.bst = new BST();
 	}
 
@@ -31,21 +30,24 @@ class LeastAncestor {
 		
 		parentNode(this.bst.root, value1, queue1);
 		parentNode(this.bst.root, value2, queue2);
+		
+		// in JAVA there is function i guess Math.abs()
+		// you can use int temp = Math.abs(queue1.size() - queue2.size());
 
-		if(queue1.size() > queue2.size()){
-			int temp = queue1.size()-queue2.size();
+		if(queue1.size() > queue2.size()) {
+			int temp = queue1.size() - queue2.size();
 			for(int i = 0; i < temp; i++)
 				queue1.poll();
 		}
-		else if(queue1.size() < queue2.size()){
-			int temp = queue2.size()-queue1.size();
+		else if(queue1.size() < queue2.size()) {
+			int temp = queue2.size() - queue1.size();
 			for(int i = 0; i < temp; i++)
 				queue2.poll();
 		}
-		while(!queue1.isEmpty()){
+		while(!queue1.isEmpty()) {
 			BNode top1 = queue1.poll();
 			BNode top2 = queue2.poll();
-			if(top1 == top2){
+			if(top1 == top2) {
 				System.out.println(top1.getValue());
 				return top1;
 			}
@@ -55,7 +57,7 @@ class LeastAncestor {
 	}
 
 	public static void main(String[] argv) {
-		LeastAncestor obj = new LeastAncestor();
+		LeastAncestor obj = new LeastCommonAncestor();
 		obj.bst.insert(7);
 		obj.bst.insert(9);
 		obj.bst.insert(3);
@@ -71,5 +73,4 @@ class LeastAncestor {
 		obj.leastCommonAncestor(9, 20);
 		new LeastAncestor().leastCommonAncestor(5, 6);				
 	}
-
 }
