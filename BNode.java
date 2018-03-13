@@ -1,35 +1,35 @@
-public class BNode{
+public class BNode {
 
-	BNode left, right;
-	int value;
+	private BNode left, right;
+	private int value;
 
-	BNode(int value){
+	BNode(int value) {
 		this.left = null;
 		this.right = null;
 		this.value = value;
 	}
 
-	void setLeftNode(BNode node){
+	void setLeftNode(BNode node) {
 		this.left = node;
 	}
 
-	void setRightNode(BNode node){
+	void setRightNode(BNode node) {
 		this.right = node;
 	}
 
-	void setValue(int value){
+	void setValue(int value) {
 		this.value = value;
 	}
 
-	int getValue(){
+	int getValue() {
 		return this.value;
 	}
 
-	BNode getLeft(){
+	BNode getLeft() {
 		return this.left;
 	}
 
-	BNode getRight(){
+	BNode getRight() {
 		return this.right;
 	}
 }
