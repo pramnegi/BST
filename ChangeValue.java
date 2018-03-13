@@ -1,14 +1,12 @@
 import java.util.*;
-public class ChangeValue{
-
+public class ChangeValue {
 
 	private BST bst ; 
-
-	ChangeValue(){
+	ChangeValue() {
 		this.bst = new BST();
 	}
 
-	int sumValue(BNode node){
+	private int sumValue(BNode node) {
 		if(node == null) {
 			return 0;
 		}
@@ -18,11 +16,11 @@ public class ChangeValue{
 		return nodeValue + node.getValue();
 	}
 
-	public void sumValue(){
+	public void sumValue() {
 		sumValue(this.bst.root);
 	}
 
-	public void printTreePreOrder(BNode node){
+	private void printTreePreOrder(BNode node) {
 		if(node == null)
 			return;
 		System.out.print(node.getValue()+" ");
@@ -32,12 +30,12 @@ public class ChangeValue{
 	}
 
 	//Wrapper function to call printTreePreOrder function.
-	public void printTreePreOrder(){
+	public void printTreePreOrder() {
 		printTreePreOrder(bst.root);
 		System.out.println();
 	}
 	
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		ChangeValue obj = new ChangeValue();
 		obj.bst.insert(7);
 		obj.bst.insert(9);
@@ -58,5 +56,4 @@ public class ChangeValue{
 		obj.printTreePreOrder();
 		new ChangeValue().sumValue();				//check for empty binary search tree.
 	}
-
 }
