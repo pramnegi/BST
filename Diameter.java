@@ -12,7 +12,7 @@ class Diameter {
 		if(node == null)
 			return 0;
 		else if(map.get(node) == null)
-			map.put(node,1+ Math.max(height(node.getLeft(), map), height(node.getRight(), map)));
+			map.put(node, 1 + Math.max(height(node.getLeft(), map), height(node.getRight(), map)));
 		return map.get(node);
 	}
 
