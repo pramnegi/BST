@@ -1,3 +1,6 @@
+// Time Complexity : O(n)
+// Space Complexity : O(height)
+
 import java.util.Queue;
 import java.util.LinkedList;
 class LeastAncestor {
@@ -31,8 +34,6 @@ class LeastAncestor {
 		
 		parentNode(this.bst.root, value1, queue1);
 		parentNode(this.bst.root, value2, queue2);
-		System.out.println(stack1);
-		System.out.println(stack2);
 
 		if(queue1.size() > queue2.size()){
 			int temp = queue1.size()-queue2.size();
