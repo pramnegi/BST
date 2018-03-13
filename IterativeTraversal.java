@@ -1,13 +1,12 @@
 import java.util.*;
-class IterativeTraversal{
+class IterativeTraversal {
 	
 	private BST bst;
-
-	IterativeTraversal(){
+	public IterativeTraversal() {
 		this.bst = new BST();
 	}
 
-	public void preOrderTraversal(){
+	public void preOrderTraversal() {
 		if(this.bst.root == null) {
 			return;
 		}
@@ -29,7 +28,7 @@ class IterativeTraversal{
 		System.out.println();
 	}
 
-	public void inOrderTraversal(){
+	public void inOrderTraversal() {
     Stack<BNode> stack = new Stack<BNode>();
     if(this.bst.root == null)
         return;
@@ -66,7 +65,7 @@ class IterativeTraversal{
     System.out.println();
 }
 
-	public void levelTraversal(){
+	public void levelTraversal() {
 		if(this.bst.root == null) {
 			return;
 		}
@@ -102,5 +101,4 @@ class IterativeTraversal{
 		obj.levelTraversal();
 		//new IterativeTraversal().preOrderTraversal();				//check for empty binary search tree.
 	}
-
 }
