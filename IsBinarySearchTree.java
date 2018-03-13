@@ -6,7 +6,7 @@ public class IsBinarySearchTree {
 		this.bst = new BST();
 	}
 
-	private bool isBST(BNode node, Stack<BNode> stack) {
+	private boolean isBST(BNode node, Stack<BNode> stack) {
 		if (node == null) {
             return true;
 		}
@@ -20,7 +20,7 @@ public class IsBinarySearchTree {
 
         while(!stack.isEmpty()) {
         	BNode top = stack.pop();
-			if(prev != null) {
+			if(prev == null) {
 				prev = top;
 			} else {
 				if(prev.getValue() >= top.getValue()) {
@@ -42,7 +42,7 @@ public class IsBinarySearchTree {
 
 	public void isBST(){
 		Stack<BNode> stack = new Stack<>();
-		bool result = isBST(this.bst.root, stack);
+		boolean result = isBST(this.bst.root, stack);
 		if(result) {
 			System.out.println("Binary Search Tree");
 		} else {
@@ -50,40 +50,10 @@ public class IsBinarySearchTree {
 		}
 	}
 
-	/*
-	NOTE: If binary tree is having all different values, can go with this solution.
-	
-	private void isBST(BNode node, Queue<Integer> queue){
-		if (node == null)
-            return;
-        isBST(node.getLeft(), queue);
-        queue.offer(node.getValue());
-        isBST(node.getRight(), queue);
-	}
-
-	public void isBST(){
-		Queue<Integer> queue = new LinkedList<>();
-		isBST(this.bst.root, queue);
-		if(!queue.isEmpty()){
-			int previous = queue.poll();
-			while(!queue.isEmpty()){
-				int current = queue.poll();
-				if(current <= previous){
-					System.out.println("Not a Binary Search Tree");
-					return;
-				}
-				previous = current;
-			}
-		}
-		System.out.println("Binary Search Tree");
-	}
-	*/
-
 	public static void main(String[] argv){
 		IsBinarySearchTree obj = new IsBinarySearchTree();
 		//obj.bst.insert(-2147483648);
 		obj.bst.insert(90);
-		obj.bst.insert(30);
 		obj.bst.insert(30);
 		obj.bst.insert(20);
 		//obj.bst.root.getLeft().getLeft().setValue(30);

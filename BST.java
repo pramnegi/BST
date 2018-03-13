@@ -1,12 +1,12 @@
-public class BST{
+public class BST {
 
 	public BNode root;
 
-	public BST(){
+	public BST() {
 		this.root = null;
 	}
 
-	private BNode insert(BNode node, int num){
+	private BNode insert(BNode node, int num) {
 		if(node == null) {
 			node = new BNode(num);
 		}
@@ -19,7 +19,7 @@ public class BST{
 		return node;
 	}
 
-	//Wrapper function to call insert.
+	//Wrapper function.
 	public void insert(int num){
 		this.root = insert(this.root, num);
 	}
@@ -32,7 +32,7 @@ public class BST{
 		}
 	}
 
-	//Wrapper function to call countNode
+	//Wrapper function to call countNode.
 	public int countNode(){
 		return countNode(this.root);
 	}
@@ -45,7 +45,7 @@ public class BST{
 		}
 	}
 
-	//Wrapper function to call sumValue
+	//Wrapper function to call sumValue.
 
 	public int sumValue(){
 		return sumValue(this.root);

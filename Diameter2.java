@@ -1,10 +1,10 @@
 import java.util.Map;
 import java.util.HashMap;
-class Diameter{
+class Diameter2{
 
 	private BST bst;
 
-	Diameter(){
+	Diameter2(){
 		this.bst = new BST();
 	}
 
@@ -25,7 +25,7 @@ class Diameter{
 	}
 
 	public static void main(String[] argv){
-		Diameter obj = new Diameter();
+		Diameter2 obj = new Diameter2();
 		obj.bst.insert(70);
 		obj.bst.insert(90);
 		obj.bst.insert(30);
@@ -40,7 +40,7 @@ class Diameter{
 		obj.bst.insert(67);
 		
 		obj.findDiameter();
-		new Diameter().findDiameter();			//check for empty binary search tree.
+		new Diameter2().findDiameter();			//check for empty binary search tree.
 	}
 
 }

@@ -1,24 +1,24 @@
-import java.util.*;
+import java.util.Stack;
 
-public class AltLevelTraversal{
+public class AltLevelTraversal {
 
 	private BST bst ; 
 
-	public AltLevelTraversal(){
+	public AltLevelTraversal() {
 		this.bst = new BST();
 	}
 
-	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2){
+	private void altLevel(Stack<BNode> stack1, Stack<BNode> stack2) {
 		if(this.bst.root == null) {
 			return;
 		}
-		System.out.println(this.bst.root.getValue() + " ");
+
 		stack1.push(this.bst.root);
 		while(!stack1.isEmpty() || !stack2.isEmpty()){
 			if(!stack1.isEmpty()) {
 				while(!stack1.isEmpty()) {
 					BNode top = stack1.pop();
-					System.out.println(top.getValue() + " ");
+					System.out.print(top.getValue() + " ");
 					if(top.getLeft() != null){
 						stack2.push(top.getLeft());
 					}
@@ -29,12 +29,12 @@ public class AltLevelTraversal{
 			} else {
 				while(!stack2.isEmpty()) {
 					BNode top = stack2.pop();
-					System.out.println(top.getValue() + " ");
+					System.out.print(top.getValue() + " ");
 					if(top.getRight() != null){
-						stack2.push(top.getRight());
+						stack1.push(top.getRight());
 					}
 					if(top.getLeft() != null){
-						stack2.push(top.getLeft());
+						stack1.push(top.getLeft());
 					}
 				}
 			}
@@ -43,13 +43,13 @@ public class AltLevelTraversal{
 	} 
 
 	//Wrapper function to call findEachLevelSum function.
-	public void altLevel(){
+	public void altLevel() {
 		Stack<BNode> stack1 = new Stack<BNode>();
 		Stack<BNode> stack2 = new Stack<BNode>();
 		altLevel(stack1, stack2);
 	}
 
-	public static void main(String[] argv){
+	public static void main(String[] argv) {
 		AltLevelTraversal obj = new AltLevelTraversal();
 		obj.bst.insert(70);
 		obj.bst.insert(90);

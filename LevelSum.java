@@ -1,10 +1,11 @@
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
-public class LevelSum{
+public class LevelSum {
 
 	private BST bst ; 
 
-	public LevelSum(){
+	public LevelSum() {
 		this.bst = new BST();
 	}
 

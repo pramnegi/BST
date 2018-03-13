@@ -2,7 +2,8 @@ import java.util.*;
 class IterativeTraversal {
 	
 	private BST bst;
-	IterativeTraversal() {
+	
+	public IterativeTraversal() {
 		this.bst = new BST();
 	}
 

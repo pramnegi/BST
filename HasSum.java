@@ -11,7 +11,7 @@ class HasSum {
 		if(node == null)
 			return false;
 
-		if((sum == node.value) && node.getLeft() == null && node.getRight() == null) {
+		if((sum == node.getValue()) && node.getLeft() == null && node.getRight() == null) {
 			return true;
 		}
 
@@ -31,7 +31,6 @@ class HasSum {
 		obj.bst.insert(90);
 		obj.bst.insert(30);
 		obj.bst.insert(20);
-		obj.bst.insert(80);
 		obj.bst.insert(-40);
 		obj.bst.insert(50);
 		obj.bst.insert(40);
