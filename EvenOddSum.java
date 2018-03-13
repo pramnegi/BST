@@ -1,7 +1,6 @@
 public class EvenOddSum{
 
 	private BST bst ; 
-
 	EvenOddSum(){
 		bst = new BST();
 	}
@@ -18,7 +17,7 @@ public class EvenOddSum{
 	} 
 
 	//Wrapper function to call findLevelSum function.
-	public void findLevelSum(){
+	public void findLevelSum() {
 		//assigning value 0 otherwise if we call findlevel function more than once it'll change the value.
 		int[] sum = new int[]{0,0};
 		findLevelSum(bst.root, 0, sum);
@@ -41,5 +40,4 @@ public class EvenOddSum{
 		obj.findLevelSum();
 		new EvenOddSum().findLevelSum();				//check for empty binary search tree.
 	}
-
 }
