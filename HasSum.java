@@ -2,8 +2,7 @@ import java.util.Queue;
 class HasSum {
 
 	private BST bst;
-
-	HasSum() {
+	public HasSum() {
 		this.bst = new BST();
 	}
 
