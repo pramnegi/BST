@@ -72,7 +72,7 @@ class LeastCommonAncestor {
 		obj.bst.insert(4);
 		obj.bst.insert(6);
 		
-		obj.leastCommonAncestor(9, 20);
+		obj.leastCommonAncestor(9, 0);
 		new LeastCommonAncestor().leastCommonAncestor(5, 6);				
 	}
 }
