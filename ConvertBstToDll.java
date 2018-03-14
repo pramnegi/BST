@@ -22,8 +22,6 @@ class ConvertBstToDll {
 	private BNode[] tuple(BNode node1, BNode node2) {
 		return new BNode[]{node1, node2};
 	}
-	
-	
 
 	private void merge(BNode prev, BNode current, BNode next) {
 		prev.setRightNode(current);
