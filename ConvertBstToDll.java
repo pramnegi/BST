@@ -23,8 +23,6 @@ class ConvertBstToDll {
 		return new BNode[]{node1, node2};
 	}
 	
-	
-
 	private void merge(BNode prev, BNode current, BNode next) {
 		prev.setRightNode(current);
 		current.setLeftNode(prev);
@@ -68,7 +66,6 @@ class ConvertBstToDll {
 		obj.bst.insert(1);
 		obj.bst.insert(5);
 		obj.bst.insert(14);
-		obj.bst.insert(15);
 		obj.bst.insert(40);
 		obj.bst.insert(6);
 		obj.bst.insert(20);
