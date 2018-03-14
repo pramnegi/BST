@@ -1,11 +1,8 @@
 // Time complexity O(n)
-// Space complexity O(n)
-
-import java.util.Queue;
-import java.util.LinkedList;
+// Space complexity O(height)
 
 class ConvertBstToDll {
-	
+
 	private BST bst;
 
 	ConvertBstToDll() {
@@ -16,49 +13,49 @@ class ConvertBstToDll {
 		if(node == null)
 			return;
 		while(node != null){
-			//System.out.println(node.getLeft() + " " + node.getValue() + " " + node.getRight());
 			System.out.print(node.getValue() + " ");
 			node = node.getRight();	
 		}
 		System.out.println();
 	}
 
-	public void inOrderTraversal(BNode node, Queue<BNode> queue) {
-		
-		if(node == null)
-			return;
+	private BNode[] tuple(BNode node1, BNode node2) {
+		return new BNode[]{node1, node2};
+	}
+	
+	
 
-		inOrderTraversal(node.getLeft(), queue);
-		queue.offer(node);
-		inOrderTraversal(node.getRight(), queue);
+	private void merge(BNode prev, BNode current, BNode next) {
+		prev.setRightNode(current);
+		current.setLeftNode(prev);
+		current.setRightNode(next);
+	}
+
+	public BNode[] postOrderTraversal(BNode node) {
+		
+		if(node.getLeft() == null && node.getRight() == null)
+			return tuple(node,node);
+
+		BNode[] tuple1 = new BNode[]{node, node};
+		BNode[] tuple2 = new BNode[]{node, node};
+
+		if(node.getLeft() != null)
+			tuple1 = postOrderTraversal(node.getLeft());
+		if(node.getRight() != null)
+			tuple2 = postOrderTraversal(node.getRight());
+		
+		merge(tuple1[1], node, tuple2[0]);
+
+		return tuple(tuple1[0], tuple2[1]);
 	}
 
 	public void convert() {
-
-		Queue<BNode> queue = new LinkedList<BNode>();
-
 		if(this.bst.root == null)
 			return;
-
-		inOrderTraversal(this.bst.root, queue);
-
-		//Convert BinarySearchTree to Doubly LinkedList.
-		BNode currentNode = queue.poll();
-		this.bst.root = currentNode;
-		currentNode.setLeftNode(null);
-		BNode prevNode = currentNode;
-
-		while(!queue.isEmpty()) {
-			currentNode = queue.poll();
-			prevNode.setRightNode(currentNode);
-			currentNode.setLeftNode(prevNode);
-			prevNode = currentNode;
-		}
-		prevNode.setRightNode(null);
-
-		//print Doubly LinkedList.
+		BNode[] t = postOrderTraversal(this.bst.root);
+		this.bst.root = t[0];
+		t[1].setRightNode(null);
 		printDll(this.bst.root);
-
 	}
 
 	public static void main(String[] argv) {
@@ -70,8 +67,11 @@ class ConvertBstToDll {
 		obj.bst.insert(8);
 		obj.bst.insert(1);
 		obj.bst.insert(5);
-		obj.bst.insert(4);
+		obj.bst.insert(14);
+		obj.bst.insert(15);
+		obj.bst.insert(40);
 		obj.bst.insert(6);
+		obj.bst.insert(20);
 		
 		obj.convert();
 		new ConvertBstToDll().convert();	
