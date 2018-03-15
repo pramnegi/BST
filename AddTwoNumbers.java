@@ -52,8 +52,10 @@ class AddTwoNumbers {
 			for(int i = 0; i < diff; i++)
 				list2.insertBeg(0);
 		}
-		
-		addNumber(list1.head, list2.head, 0);
+
+		int carry = addNumber(list1.head, list2.head, 0);
+		if(carry == 1)
+			list1.insertBeg(1);
 	}
 
 
@@ -65,11 +67,14 @@ class AddTwoNumbers {
 		list1.insertBeg(9);
 		list1.insertBeg(9);
 		list1.insertBeg(9);
-		list1.insertBeg(8);
+		list1.insertBeg(9);
 		
 		LinkedList list2 = new LinkedList();
 		list2.insertBeg(9);
-		list2.insertBeg(0);
+		list2.insertBeg(9);
+		list2.insertBeg(9);
+		list2.insertBeg(9);
+		list2.insertBeg(9);
 
 		list1.printList();
 		list2.printList();
