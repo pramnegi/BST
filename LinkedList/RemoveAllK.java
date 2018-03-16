@@ -37,8 +37,8 @@ class RemoveAllK {
 		obj.list.insertBeg(10);
 		obj.list.insertBeg(60);
 		obj.list.insertBeg(20);
-		obj.list.printList();
+		LinkedList.printList(list.head);
 		obj.removeK(200);
-		obj.list.printList();
+		LinkedList.printList(list.head);
 	}
 }

@@ -25,13 +25,11 @@ public class LinkedList {
 		head = node;
 	}
 
-	public void printList() {
+	public static void printList(Node node) {
 
-		Node currentNode = head;
-
-		while(currentNode != null) {
-			System.out.print(currentNode.value + " ");
-			currentNode = currentNode.next ;
+		while(node != null) {
+			System.out.print(node.value + " ");
+			node = node.next ;
 		}
 
 		System.out.println();
@@ -45,6 +43,6 @@ public class LinkedList {
 		l.insertBeg(30);
 		l.insertBeg(10);
 		l.insertBeg(60);
-		l.printList();
+		printList(l.head);
 	}
 }

@@ -3,9 +3,8 @@
 
 class AddTwoNumbers {
 
-	public static int length(LinkedList list) {
+	public static int length(Node node) {
 		int length = 0;
-		Node node = list.head;
 		while(node != null) {
 			node = node.next;
 			length++;
@@ -40,8 +39,8 @@ class AddTwoNumbers {
 			return;
 		}
 		
-		int length1 = length(list1);
-		int length2 = length(list2);
+		int length1 = length(list1.head);
+		int length2 = length(list2.head);
 		int diff = Math.abs(length1 - length2);
 
 		if(length1 < length2) {
@@ -76,10 +75,10 @@ class AddTwoNumbers {
 		list2.insertBeg(9);
 		list2.insertBeg(9);
 
-		list1.printList();
-		list2.printList();
+		LinkedList.printList(list1.head);
+		LinkedList.printList(list2.head);
 
 		addNumber(list1, list2);
-		list1.printList();
+		LinkedList.printList(list1.head);
 	}
 }

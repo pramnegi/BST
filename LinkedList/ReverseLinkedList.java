@@ -51,10 +51,10 @@ class ReverseLinkedList {
 		obj.list.insertBeg(30);
 		obj.list.insertBeg(10);
 		obj.list.insertBeg(60);
-		obj.list.printList();
+		LinkedList.printList(obj.list.head);
 		obj.iterativeReverseList();
-		obj.list.printList();
+		LinkedList.printList(obj.list.head);
 		obj.recursiveReverseList();
-		obj.list.printList();
+		LinkedList.printList(obj.list.head);
 	}
 }

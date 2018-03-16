@@ -5,38 +5,38 @@ class MergeSortedList {
 
 	// list1.head will point to the merged list.
 
-	public static void mergeList(LinkedList list1, LinkedList list2) {
+	public static Node mergeList(Node node1, Node node2) {
 		
-		Node current1 = list1.head;
 		Node prev1 = null;
-		Node current2 = list2.head;
+		Node temp = node1;
 
-		if(list1.head == null || list2.head == null) {
-			if(list2.head == null)
-				return ;
-			list1.head = list2.head;
+		if(node1 == null || node2 == null) {
+			if(node2 == null)
+				return node1;
+			temp = node2;
 		}
 
-		if(current2.value < current1.value) {
-			list1.head = current2;
-			current2 = current2.next;
-			prev1 = list1.head;
+		if(node2.value < node1.value) {
+			temp = node2;
+			node2 = node2.next;
+			prev1 = node1;
 		}
 
-		while(current1 != null && current2 != null) {
-			if(current2.value < current1.value) {
-				prev1.next = current2;
-				prev1 = current2;
-				current2 = current2.next;
-				prev1.next = current1;
+		while(node1 != null && node2 != null) {
+			if(node2.value < node1.value) {
+				prev1.next = node2;
+				prev1 = node2;
+				node2 = node2.next;
+				prev1.next = node1;
 				continue;
 			}
-			prev1 = current1;
-			current1 = current1.next;
+			prev1 = node1;
+			node1 = node1.next;
 		}
 
-		if(current2 != null)
-			prev1.next = current2;
+		if(node2 != null)
+			prev1.next = node2;
+		return temp;
 	}
 	
 	public static void main(String[] argv) {
@@ -56,7 +56,7 @@ class MergeSortedList {
 		list2.insertBeg(10);
 		list2.insertBeg(5);
 
-		mergeList(list1, list2);
-		list1.printList();
+		Node newNode = mergeList(list1.head, list2.head);
+		LinkedList.printList(newNode);
 	}
 }
