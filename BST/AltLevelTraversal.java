@@ -58,8 +58,6 @@ public class AltLevelTraversal {
 		obj.bst.insert(80);
 		obj.bst.insert(10);
 		obj.bst.insert(50);
-		obj.bst.insert(40);
-		obj.bst.insert(60);
 		obj.bst.insert(5);
 		obj.bst.insert(15);
 		obj.bst.insert(45);
