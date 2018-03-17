@@ -1,12 +1,12 @@
-// Time Complexity : O(n)
-// Space Complexity : O(1)
+//Time Complexity : O(n^2)
 
 import java.util.ArrayList;
 
-class FindTuples {
+class FindTriplets {
+	// k is the first number amongs the triplets.
 
-	public static int tuples(int[] a, int sum, ArrayList<ArrayList<Integer>> list) {
-		int low = 0, result = 0,  high = a.length - 1;
+	public static int tuples(int[] a, int low, int high, int sum, ArrayList<ArrayList<Integer>> list, int k) {
+		int result = 0;
 		while(low < high) {
 			if(a[low] + a[high] == sum) {
 				int countLow = 1;
@@ -23,8 +23,9 @@ class FindTuples {
 
 				result += countLow * countHigh;
 
-				for(int k = 0; k < countLow * countHigh; k++) {
+				for(int l = 0; l < countLow * countHigh; l++) {
 					ArrayList<Integer> temp = new ArrayList<>();
+					temp.add(k);
 					temp.add(a[low]);
 					temp.add(a[high]);
 					list.add(temp);
@@ -41,13 +42,19 @@ class FindTuples {
 		}
 		return result;
 	}
+
+	public static int triplets(int[] a, int sum) {
+		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+		int result = 0;
+		for(int i = 0; i < a.length; i++) {
+			result += tuples(a, i+1, a.length-1, sum - a[i], list, a[i]);
+		}
+		System.out.println(list);
+		return result;
+	}
 	
 	public static void main(String[] argv) {
-		int[] array = new int[]{-31,-31,1,3,4,5,10,20,63,67,75,89,90,99,99};
-		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-		System.out.println(tuples(array, 68,list));
-		System.out.println(list);
-		array = new int[]{-31,-31,-31,-31,99,99};
-		System.out.println(tuples(array, 68,list));
+		int[] array = new int[]{-31,1,3,4,5,10,20,63,67,75,89,90,99};
+		System.out.println(triplets(array, 68));
 	}
 }
