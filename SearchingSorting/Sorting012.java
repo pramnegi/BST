@@ -3,7 +3,7 @@
 
 class Sorting012 {
 
-	public static void sortPartition(int[] array, int start, int end, int element) {
+	/*public static void sortPartition(int[] array, int start, int end, int element) {
 		
 		if(element == 3)
 			return;
@@ -29,11 +29,34 @@ class Sorting012 {
 				array[j] = temp;
 			}
 		}
+	}*/
+
+	public static void sortPartition(int[] array) {
+		
+		int end0 = -1;
+		int start2 = array.length;
+
+		for(int i = 0; i < start2; i++) {
+			if(array[i] == 0) {
+				end0++;
+				int temp = array[end0];
+				array[end0] = array[i];
+				array[i] = temp;
+			}
+			else if(array[i] == 2) {
+				start2--;
+				int temp = array[start2];
+				array[start2] = array[i];
+				array[i] = temp;
+				i--;
+			}
+		}
+		
 	}
 	
 	public static void main(String[] argv) {
-		int[] array = {2,0,1,2,1,0,1,0,1,1,2,1,0,0,2,0,2,0,0,2,0,1,1,1,0,1,0,0,2};
-		sortPartition(array, 0, array.length-1, 1);
+		int[] array = {2,0,1,2,1,0,1,0,0,2,1,1,1,2,1,0,0,2,0,2,0,0,2,0,1,1,1,0,1,0,0,2};
+		sortPartition(array);
 		for(int num : array)
 			System.out.print(num + " ");
 		System.out.println();

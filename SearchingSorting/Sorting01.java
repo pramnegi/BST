@@ -4,6 +4,9 @@
 class Sorting01 {
 
 	public static int[] sortArray(int[] array) {
+
+		if(array.length == 0)
+			return array;
 		
 		int endIndex = array.length - 1;	//After index endIndex every element in the array will be 1.
 
@@ -17,9 +20,10 @@ class Sorting01 {
 				while(endIndex > i && array[endIndex] == 1) 		//Checking for the index where a[i] = 0 so that we can swap it with 1.
 					endIndex--;
 
-				array[endIndex] = 1;
+				int temp = array[endIndex];
+				array[endIndex] = array[i];
+				array[i] = temp;
 				endIndex--;
-				array[i] = 0;
 			}
 		}
 		return array;
