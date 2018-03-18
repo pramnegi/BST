@@ -1,11 +1,21 @@
 // Time Complexity : O(n)
 // Space Complexity : O(1)
 
+// Problem : Sort an array having only 0 and 1.
+
 class Sorting01 {
+
+	public static void swap(int[] a, int i, int j) {
+		if(a != null && i >= 0 && j >= 0 && i < a.length && j < a.length) {
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;	
+		}
+	}
 
 	public static int[] sortArray(int[] array) {
 
-		if(array.length == 0)
+		if(array == null || array.length == 1)
 			return array;
 		
 		int endIndex = array.length - 1;	//After index endIndex every element in the array will be 1.
@@ -20,10 +30,7 @@ class Sorting01 {
 				while(endIndex > i && array[endIndex] == 1) 		//Checking for the index where a[i] = 0 so that we can swap it with 1.
 					endIndex--;
 
-				int temp = array[endIndex];
-				array[endIndex] = array[i];
-				array[i] = temp;
-				endIndex--;
+				swap(array, endIndex, i);
 			}
 		}
 		return array;

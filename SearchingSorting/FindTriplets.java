@@ -44,6 +44,8 @@ class FindTriplets {
 	}
 
 	public static int triplets(int[] a, int sum) {
+		if(array == null)
+			return;
 		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
 		int result = 0;
 		for(int i = 0; i < a.length; i++) {

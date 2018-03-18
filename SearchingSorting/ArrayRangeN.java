@@ -19,13 +19,17 @@ class ArrayRangeN {
 
 	public static int[] sortArrayN(int[] array) {
 
-		for(int i = 0; i < array.length; i++) {
-			while(array[i] != i + 1) {
+		int i = 0;
+		while(i < array.length) {
+			if(array[i] != i + 1) {
 				int temp = array[i];
 				array[i] = array[array[i] - 1];
 				array[temp - 1] = temp;
 			}
+			else
+				i++;
 		}
+		
 		return array;
 	}
 	

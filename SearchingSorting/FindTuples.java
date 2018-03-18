@@ -6,12 +6,14 @@ import java.util.ArrayList;
 class FindTuples {
 
 	public static int tuples(int[] a, int sum, ArrayList<ArrayList<Integer>> list) {
+		if(a == null)
+			return;
 		int low = 0, result = 0,  high = a.length - 1;
 		while(low < high) {
 			if(a[low] + a[high] == sum) {
 				int countLow = 1;
 				int countHigh = 1;
-				//Counting number of freq of a[low] and a[high].
+				//Counting freq of a[low] and a[high].
 				while(low+1 < a.length && a[low] == a[low + 1]) {
 					countLow++;
 					low++;
