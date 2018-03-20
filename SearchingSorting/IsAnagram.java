@@ -1,7 +1,7 @@
 //Time Complexity O(n)
 //Space Complexity O(n)
 
-// Ques: Check if string b is an anagram of a.
+// Ques: Check if string b is an anagram of string a.
 
 import java.util.Map;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ class IsAnagram {
 	
 	public static void main(String[] argv) {
 		String a = "is Anagram or Not";
-		String b = "Got an";
+		String b = "check if anagram";
 		if(isAnagram(a,b))
 			System.out.println("Anagram");
 		else

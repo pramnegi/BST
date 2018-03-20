@@ -5,13 +5,13 @@
 
 class FindMinRotatedArray {
 
-	public static int modifiedBinSearch(int a[]) {
+	public static int modifiedBinSearch(int array[]) {
 		
-		if(a == null || a.length == 0)
+		if(array == null || array.length == 0)
 			return -1;
 		
 		int low = 0;
-		int high = a.length - 1;
+		int high = array.length - 1;
 		int index = -1;
 		int min = Integer.MAX_VALUE;
 
@@ -19,16 +19,16 @@ class FindMinRotatedArray {
 
 			int mid = low + (high - low)/2;
 
-			if(a[mid] < a[high]) {
-				if(a[mid] < min) {
+			if(array[mid] < array[high]) {
+				if(array[mid] < min) {
 					index = mid;
-					min = a[mid];
+					min = array[mid];
 				}
 				high = mid - 1;
 			}
 			else {
-				if(a[low] < min) {
-					min = a[low];
+				if(array[low] < min) {
+					min = array[low];
 					index = low;
 				}
 				low = mid + 1;
