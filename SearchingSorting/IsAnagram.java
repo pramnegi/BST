@@ -12,6 +12,11 @@ class IsAnagram {
 		
 		if(b == null || b.length() == 0)
 			return true;
+
+		if(a.length() < b.length())
+			return false;
+
+		//Check for equal length and if length equal traverse both the strings simultaneously.
 		
 		Map<Character, Integer> map = new HashMap<>();
 		
