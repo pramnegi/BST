@@ -18,5 +18,6 @@ class DuplicateNumber {
 
 	public static void main(String[] argv) {
 		System.out.println(findDuplicate(new int[] {3,2,4,6,5,1,4}));
+		System.out.println(findDuplicate(null));
 	}
 }

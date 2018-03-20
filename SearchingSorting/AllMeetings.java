@@ -1,6 +1,7 @@
 // Time Complexity : O(n)
 // Space Complexity : O(1)
 
+//Problem : Check weather a person could attend all the meetings or not.
 import java.util.*;
 
 class Interval {
@@ -50,7 +51,7 @@ public class AllMeetings {
 		ArrayList<Interval> list = new ArrayList<>();
 		list.add(new Interval(2,3));
 		list.add(new Interval(5,10));
-		//list.add(new Interval(12,23));
+		list.add(new Interval(12,23));
 		list.add(new Interval(13,15));
 		list.add(new Interval(15,17));
 		list.add(new Interval(24,30));

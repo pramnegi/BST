@@ -1,6 +1,8 @@
 // Time Complexity : O(logn)
 // Space Complexity : O(1)
 
+//Implement binary search. 
+
 class BinarySearch {
 
 	public static int binarySearch(int[] a, int element)	{
