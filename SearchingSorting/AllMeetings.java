@@ -2,7 +2,7 @@
 // Space Complexity : O(1)
 
 //Problem : Check weather a person could attend all the meetings or not.
-import java.util.*;
+import java.util.*; // be specific about which class you need, * is not a good
 
 class Interval {
 
@@ -27,23 +27,18 @@ public class AllMeetings {
 		if(list == null || list.isEmpty())
 			return true;
 
-		Interval temp = list.get(0);
-		int preStart = temp.start;
-		int preEnd = temp.end;
-
-		for(int i = 1; i <  list.size(); i++) {
-
-			int currentStart = list.get(i).start;
-			int currentEnd = list.get(i).end;
-
-			if(currentStart <= preEnd) 
+		// lets sort is here
+		Collections.sort(list, new Comparator<Interval>(){
+        	public int compare(Interval i1, Interval i2){
+            	return i1.start-i2.start;
+        	}
+   		});
+		
+		for(int i = 1; i < list.size(); i++) { // check current with previous
+			if(list.get(i).start < list.get(i - 1).end) 
 				return false;
-			
-			preStart = currentStart;
-			preEnd = currentEnd;
 		}
 		return true;
-
 	}
 
 	public static void main(String[] argv) {
@@ -56,13 +51,6 @@ public class AllMeetings {
 		list.add(new Interval(15,17));
 		list.add(new Interval(24,30));
 
-		Collections.sort(list, new Comparator<Interval>(){
-        	public int compare(Interval i1, Interval i2){
-            	return i1.start-i2.start;
-        	}
-   		});
-
 		System.out.println(check(list));
 	}
-	
 }
