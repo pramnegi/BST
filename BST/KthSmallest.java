@@ -5,15 +5,14 @@ import java.util.Stack;
 
 class KthSmallest {
 
-	public static int find(BNode node, int k) {
+	public static BNode find(BNode node, int k) {
 		
 		if(node == null || k < 1)
-			return Integer.MIN_VALUE;
+			return null;
 
 		Stack<BNode> stack = new Stack<>();
 
 		int temp = 0;
-
 		while(node != null) {
 			stack.push(node);
 			node = node.getLeft();
@@ -23,7 +22,7 @@ class KthSmallest {
 			BNode current = stack.pop();
 			temp++;
 			if(temp == k)
-				return current.getValue();
+				return current;
 			current = current.getRight();
 			while(current != null) {
 				stack.push(current);
@@ -31,11 +30,8 @@ class KthSmallest {
 			}
 		}
 		System.out.println();
-		return Integer.MIN_VALUE;
-		
-
+		return null;
 	}
-	
 
 	public static void main(String[] argv) {
 		BST bst = new BST();
