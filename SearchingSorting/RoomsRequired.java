@@ -32,11 +32,9 @@ class Interval {
 	}
 }
 
-
 public class RoomsRequired {
 
 	//[METHOD 1] : without using priority queue
-
 	public static int rooms(ArrayList<Interval> list) {
 
 		if(list == null || list.isEmpty())
@@ -48,21 +46,21 @@ public class RoomsRequired {
 			newList.add(-list.get(i).end);
 		}
 		
-		Collections.sort(newList, new Comparator<Integer>(){
-        	public int compare(Integer i1, Integer i2){
-        		if(Math.abs(i1) - Math.abs(i2) != 0)
-            		return Math.abs(i1) - Math.abs(i2);
-            	return (i1 > i2 ? -1:  1);
-        	}
-   		});
+		Collections.sort(newList, new Comparator<Integer>() {
+			public int compare(Integer i1, Integer i2) {
+				if(Math.abs(i1) - Math.abs(i2) != 0)
+					return Math.abs(i1) - Math.abs(i2);
+				return (i1 > i2 ? -1:  1);
+			}
+		});
 
-   		int result = Integer.MIN_VALUE;
+   		int result = 0; // min room can't be less than 0
 		int tempResult = 0;
 
 		for(int i = 0; i < newList.size(); i++) {
 			if(newList.get(i) >= 0) {
-				if(++tempResult > result)
-					result = tempResult;
+				++tempResult;
+				result = Math.max(result, tempResult);
 			}
 			else
 				--tempResult;
@@ -71,30 +69,25 @@ public class RoomsRequired {
 	}
 
 	//[METHOD 2] :using priority queue.
-
 	public static int roomsRequired(ArrayList<Interval> list) {
 		
 		if(list == null || list.isEmpty())
 			return 0;
 
-		int result = Integer.MIN_VALUE;
-		int tempResult = 0;
+		int result = 0; // min room can't be less than 0
 
 		Queue<Integer> finishingTime = new PriorityQueue<>();
 
-		for(int i = 0; i < list.size(); i++) {
-
+		finishingTime.offer(list.get(0).end);
+		for(int i = 1; i < list.size(); i++) {
 			Interval current = list.get(i);
 
-			if(finishingTime.peek() != null && finishingTime.peek() < current.start) {
+			if(finishingTime.peek() < current.start) {
 				finishingTime.poll();
-				finishingTime.offer(current.end);
+			} else {
+				++result;
 			}
-			else {
-				finishingTime.offer(current.end);
-				if(++tempResult > result)
-					result = tempResult;
-			}
+			finishingTime.offer(current.end);
 		}
 		return result;
 
