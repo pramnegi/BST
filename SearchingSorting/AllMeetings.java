@@ -2,7 +2,9 @@
 // Space Complexity : O(1)
 
 //Problem : Check weather a person could attend all the meetings or not.
-import java.util.*; // be specific about which class you need, * is not a good
+import java.util.ArrayList; 
+import java.util.Comparator; 
+import java.util.Collections; 
 
 class Interval {
 

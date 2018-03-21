@@ -1,3 +1,6 @@
+//Time Complexity : O(n)
+//Space Complexity: O(1)
+
 class IsSubsequence {
 	
 	public static boolean check(String a, String b) {
