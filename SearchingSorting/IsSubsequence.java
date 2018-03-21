@@ -2,7 +2,7 @@ class IsSubsequence {
 	
 	public static boolean check(String a, String b) {
 		
-		if(b == null)
+		if((b == null) || (b.isEmpty()))
 			return true;
 
 		if(a == null || a.length() < b.length())
