@@ -29,7 +29,6 @@ class ArrayRangeN {
 			else
 				i++;
 		}
-		
 		return array;
 	}
 	
