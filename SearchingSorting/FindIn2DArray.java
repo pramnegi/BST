@@ -1,3 +1,6 @@
+//Time Complexity: O(n+m)
+//Time Complexity: O(1)
+
 class FindIn2DArray {
 	
 	public static int[] findElement(int[][] array, int element) {
