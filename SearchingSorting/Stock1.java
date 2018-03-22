@@ -3,23 +3,18 @@
 
 class Stock1 {
     public static int maxProfit(int[] prices) {
-        if(prices == null || prices.length == 0)
+        if((prices == null) || (prices.length < 2)) {
             return 0;
-        
-        int tempProfit = 0, profit = 0;
-        int index = 0;
-               
-        for(int i = 1; i < prices.length; i++) {
-            if(prices[i] < prices[index]) {
-                index = i;
-                profit = tempProfit > profit ? tempProfit : profit;
-                tempProfit = 0;
-            }
-            else {
-                tempProfit = prices[i] - prices[index] > tempProfit ? prices[i] - prices[index] : tempProfit;
-            }
         }
-        return tempProfit > profit ? tempProfit : profit;
+    
+        int min = prices[0];
+        int maxProfit = 0;
+        
+        for(int i = 1; i < prices.length; i++) {
+            maxProfit = Math.max(maxProfit, (prices[i] - min));
+            min = Math.min(min, prices[i]);
+        }
+        return maxProfit;
     }
 
     public static void main(String[] argv) {

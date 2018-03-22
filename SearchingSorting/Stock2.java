@@ -9,18 +9,16 @@ class Stock2 {
         
         int profit = 0, currentPrice = prices[0];
         
-        /* int tempProfit = 0;
-        for(int i = 1; i < prices.length; i++) {
-            if(prices[i] < currentPrice) {
-                currentPrice = prices[i];
-                tempProfit = 0;
+        /*
+        public int maxProfit(int[] prices) {
+            int maxprofit = 0;
+            for (int i = 1; i < prices.length; i++) {
+                if (prices[i] > prices[i - 1])
+                    maxprofit += prices[i] - prices[i - 1];
             }
-            else {
-                tempProfit = prices[i] - currentPrice;
-                currentPrice = prices[i];
-            }
-            profit += tempProfit;
-        }*/
+            return maxprofit;
+        }
+        */
 
         int i = 1;
 
