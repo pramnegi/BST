@@ -8,7 +8,7 @@ class Stock1 {
         
         int tempProfit = 0, profit = 0;
         int index = 0;
-        
+               
         for(int i = 1; i < prices.length; i++) {
             if(prices[i] < prices[index]) {
                 index = i;
