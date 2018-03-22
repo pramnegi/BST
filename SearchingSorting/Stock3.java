@@ -1,9 +1,7 @@
 //Time Complexity : O(n)
 //Space Complexity : O(1)
 
-import java.util.Queue;
 import java.util.Stack;
-import java.util.LinkedList;
 
 class Stock3 {
     public static int maxProfit(int[] prices) {
@@ -14,32 +12,28 @@ class Stock3 {
         int min = prices[0];
         int maxProfit = 0;
 
-        Queue<Integer> queue = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
        
-        queue.offer(maxProfit);
+        stack.push(maxProfit);
 
         for(int i = 1; i < prices.length; i++) {
             maxProfit = Math.max(maxProfit, (prices[i] - min));
             min = Math.min(min, prices[i]);
-            queue.offer(maxProfit);
+            stack.push(maxProfit);
         }
 
         min = prices[prices.length - 1];
         maxProfit = 0;
-        Stack<Integer> stack = new Stack<>();
+
+        int result = 0;
 
 
         for(int i = prices.length - 1; i > -1; i--) {
             maxProfit = Math.max(maxProfit, (min - prices[i]));
             min = Math.max(min, prices[i]);
-            stack.push(maxProfit);
+            result = Math.max(result, stack.pop() + maxProfit);
         }
-
-        maxProfit = stack.pop() + queue.poll();
-        while(!stack.isEmpty()) {
-            maxProfit = Math.max(maxProfit, stack.pop() + queue.poll());
-        }
-        return maxProfit;
+        return result;
     }
 
     public static void main(String[] argv) {
