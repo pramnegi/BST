@@ -14,22 +14,17 @@ class MinimumCoinSumK {
 			return -1;
 		
 		int[] solution = new int[sum + 1];
+		Arrays.fill(solution, sum + 1);
 		solution[0] = 0;
-
-		for(int i = 1; i <= sum; i++)
-			solution[i] = Integer.MAX_VALUE;
 
 		for(int i = 1; i <= sum; i++) {
 			for(int j = 0; j < coins.length; j++) {
-				if(coins[j] <= i && solution[i - coins[j]] + 1 >= 0)
+				if(coins[j] <= i)
 					solution[i] = Math.min(solution[i - coins[j]] + 1, solution[i]);
 			}
 		}
 
-
-		if(solution[sum] != Integer.MAX_VALUE )
-			return solution[sum];
-		return -1;
+		return (solution[sum] > sum) ? -1 : solution[sum];
 	}
 
 	public static void main(String[] argv) {
