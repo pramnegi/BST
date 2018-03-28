@@ -1,10 +1,12 @@
-// Time Complexity : O(n^2)
-// Space Complexity : O(1)
+// Time Complexity : O(n)
+// Space Complexity : O(n)
 
 //Problem : Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram. 
 
 import java.util.Stack;
+
 class LargestRectangle {
+
     public static int largestRectangleArea(int[] heights) {
 
         if(heights == null || heights.length == 0)
@@ -36,6 +38,8 @@ class LargestRectangle {
                 i++;
             }
             else if(heights[stack.peek()] == heights[i]) {
+                stack.pop();
+                stack.push(i);
                 i++;
                 continue;
             }
