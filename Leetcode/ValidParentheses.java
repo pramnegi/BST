@@ -20,23 +20,21 @@ class ValidParentheses {
 		if(s == null || s.length() == 0)
 			return true;
 
-		if(s.length() == 1)
+		if(s.length() %2 != 0)
 			return false;
 		
 		Stack<Character> stack = new Stack<>();
 		int index = 0;
 
-		while(index != s.length() && stack.size() <= s.length() - index) {
+		while(index < s.length()) {
 			if(s.charAt(index) != '}' && s.charAt(index) != ')' && s.charAt(index) != ']')
 				stack.push(s.charAt(index));
 			else if(stack.isEmpty() || match(s.charAt(index)) != stack.pop())
 				return false;
 			index++;
 		}
-
-		if(stack.isEmpty() && index == s.length())
-			return true;
-		return false;		
+		
+		return stack.isEmpty();	
 	}
 
 	public static void main(String[] argv) {
