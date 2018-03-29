@@ -5,9 +5,9 @@
 
 class TrappingRainWater {
 
-    public static int trap(int[] heights) {
+    public static int trap(int[] height) {
 
-        if (height == null || (height.length <= 1)) {
+        if (height == null || (height.length <= 2)) {
             return 0;
         }
         
@@ -36,7 +36,7 @@ class TrappingRainWater {
     }
 
     public static void main(String[] argv) {
-        System.out.println(trap(new int[] {4,2,0,2,3,5}));
+        System.out.println(trap(new int[] {4,2,0,2,3,0}));
         System.out.println(trap(new int[] {4,2,0,3,2,5}));
         System.out.println(trap(new int[] {0,1,0,1}));
     }

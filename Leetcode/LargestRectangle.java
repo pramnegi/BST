@@ -56,6 +56,25 @@ class LargestRectangle {
                 int w = stack.isEmpty() ? i : i - stack.peek()-1;
                 max = Math.max(max, heights[temp]*w); 
         }
+
+        /*
+        Stack<Integer> stack = new Stack<Integer>();
+        int maxArea = 0;
+       
+        stack.push(-1);
+        for(int i = 0; i < heights.length; i++) {
+            int curHeight = heights[i];
+            while((stack.peek() != - 1) && (heights[stack.peek()] >= heights[i])) {
+            maxArea = Math.max(maxArea, heights[stack.pop()] * (i - stack.peek() - 1));
+        }
+        stack.push(i);
+        }
+        int rightMost = stack.peek();
+        
+        while(stack.peek() != - 1) {
+            maxArea = Math.max(maxArea, heights[stack.pop()] * (rightMost - stack.peek()));
+        }
+        */
         return max;
     }
 

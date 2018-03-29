@@ -20,7 +20,7 @@ class ValidParentheses {
 		if(s == null || s.length() == 0)
 			return true;
 
-		if(s.length() %2 != 0)
+		if(s.length() % 2 != 0)
 			return false;
 		
 		Stack<Character> stack = new Stack<>();
