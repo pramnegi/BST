@@ -1,4 +1,4 @@
-//Time Complexity : O(n)
+//Time Complexity : O(n^2)
 //Space Complexity : O(n)
 
 //Problem : Find length of longest zigzag subsequence (A sequence of numbers is called a zig-zag sequence if the differences between successive numbers strictly alternate between positive and negative.)
