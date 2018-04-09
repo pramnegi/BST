@@ -1,7 +1,7 @@
 //Time Complexity : O(n^2)
 //Space Complexity : O(n)
 
-//Problem : donations[i] represent the amount resident[i] is willing to pay. Find maximum amount of donations that can be collected if no neighbour is willing to contribute to a fund to which his neighbor has also contribute(last resident is the neighbour of 0th resident)
+//Problem : donations[i] represent the amount resident[i] is willing to pay. Find maximum amount of donations that can be collected if no neighbour is willing to contribute to a fund to which his neighbor has also contribute(last resident is the neighbour of 0th resident).
 
 class BadNeighbors {
 
@@ -16,17 +16,17 @@ class BadNeighbors {
 		
 		System.arraycopy(donations, 0, solution, 0, donations.length);
 
-		int maxDonation = solution[0];
+		int result = solution[0];
 
 		for(int i = 1; i < donations.length; i++) {
 			for(int j = i - 2; j >= 0; j--) {
 				if((i + 1) % donations.length != j)
 					solution[i] = Math.max(solution[i], solution[j] + donations[i]);
 			}
-			maxDonation = Math.max(maxDonation, solution[i]);
+			result = Math.max(result, solution[i]);
 		}
 
-		return maxDonation;
+		return result;
 	}
 
 	public static void main(String[] argv) {

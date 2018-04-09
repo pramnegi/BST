@@ -15,40 +15,23 @@ class ZigZag {
 		if(sequence.length < 2)
 			return sequence.length;
 
-		Boolean[] check = new Boolean[sequence.length];				//True if last tuple of the sequnece is increasing else false.
-		int[] solution = new int[sequence.length];
+		int[] solutionInc = new int[sequence.length];				//True if last tuple of the sequnece is increasing else false.
+		int[] solutionDec = new int[sequence.length];
 
-		Arrays.fill(solution, 1);
+		Arrays.fill(solutionInc, 1);
+		Arrays.fill(solutionDec, 1);
 		int result = 1;
 
 		for(int i = 1; i < sequence.length; i++) {
-
-			if(sequence[i] > sequence [0]) {
-				solution[i] = 2;
-				check[i] = true;
-				result = 2;
-			}
-			else if(sequence[i] < sequence [0]) {
-				solution[i] = 2;
-				check[i] = false;
-				result = 2;
-			}
-
-			for(int j = i-1; j > 0; j--) {
-				if(sequence[j] > sequence[i] && check[j]) {
-					if(solution[j] + 1 > solution[i]) {
-						solution[i] = 1 + solution[j];
-						check[i] = false;
-					}
+			for(int j = i - 1; j >= 0; j--) {
+				if(sequence[j] > sequence[i] && 1 + solutionInc[j] > solutionDec[i]) {
+					solutionDec[i] = 1 + solutionInc[j];
 				}
-				else if(sequence[j] < sequence[i] && !check[j]) {
-					if(solution[j] + 1 > solution[i]) {
-						solution[i] = 1 + solution[j];
-						check[i] = true;
-					}
+				else if(sequence[j] < sequence[i] && 1 + solutionDec[j] > solutionInc[i]) {
+					solutionInc[i] = 1 + solutionDec[j];
 				}
+				result = Math.max(result, Math.max(solutionInc[i], solutionDec[i]));
 			}
-			result = Math.max(result, solution[i]);
 		}
 		return result;
 	}
