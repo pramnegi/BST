@@ -25,7 +25,7 @@ class LongestValidParentheses {
 			if(!stack.isEmpty() && stack.peek().equals("(")) {
 				stack.pop();
 				temp = 2;
-				while(!stack.isEmpty() && !stack.peek().equals("(")) {
+				if(!stack.isEmpty() && !stack.peek().equals("(")) {
 					temp += Integer.parseInt(stack.pop());
 				}
 				result = Math.max(temp, result);
@@ -51,8 +51,6 @@ class LongestValidParentheses {
 	}
 
 	public static void main(String[] argv) {
-		System.out.println(findLVP(")))(()(())(()"));
-		System.out.println(findLVP(")()())()()("));
 		System.out.println(findLVP("(()()(())(("));
 		System.out.println(findLVP("()(())"));
 		System.out.println(findLVP(")()(((())))("));
